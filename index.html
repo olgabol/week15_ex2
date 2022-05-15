@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            font-family: Verdana, sans-serif;
+        }
+
+        .main_input,
+        .button {
+            margin-top: 2vh;
+        }
+
+        .main_header {
+            font-size: 14px;
+            align-self: center;
+        }
+
+        .main_input__sex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main_name,
+        .main_surname {
+            width: 45%;
+        }
+
+        .button {
+            background-color: #f5ba1a;
+            border: none;
+            height: 5vh;
+            color: aliceblue;
+        }
+
+        #errorMessage {
+            color: crimson;
+            font-size: x-large;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main">
+        <div class="main_header">
+            <h1>Registration Form</h1>
+        </div>
+        <input type="email" id="email" placeholder="Email" class="main_input">
+        <input type="text" id="password" class="main_input" placeholder="Password">
+        <input type="text" id="checkpassword" class="main_input" placeholder="Re-type Password">
+        <div class="main_input main_input__sex">
+            <input type="text" id="name" placeholder="First Name" class="main_name">
+            <input type="text" id="surname" placeholder="Last Name" class="main_surname">
+        </div>
+        <div class="main_input"><input type="radio" id="male" name="sex">Male
+            <input type="radio" id="female" name="sex">Female
+        </div>
+        <input type="text" name="country" id="country" placeholder="Select a country" class="main_input">
+        <div class="main_input">
+            <input type="checkbox" id="conditions">I agree with terms and conditions
+        </div>
+        <div class="main_input"><input type="checkbox" id="spam">I want to recive the newsletter
+        </div>
+        <div id="errorMessage" class="main_input"></div>
+        <button class="button" id="registerBtn" onclick="check();">Register</button>
+    </main>
+
+    <script>
+        function check() {
+            let email = document.getElementById('email');
+            let password = document.getElementById('password');
+            let passwordCheck = document.getElementById('checkpassword');
+            let name = document.getElementById('name');
+            let secName = document.getElementById('surname');
+            let country = document.getElementById('country');
+            let user = document.getElementById('name').value
+
+            if (email.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Ваш Email не заполнен<br>';
+            }
+
+            if (password.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Ваш пароль не заполнен<br>';
+            }
+
+            if (passwordCheck.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Пожалуйста, повторите пароль<br>';
+            }
+
+            if (password != passwordCheck) {
+                document.getElementById('errorMessage').innerHTML += 'Ваши пароли не совпадают<br>';
+            }
+
+            if (name.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Пожалуйста, укажите Ваше имя<br>';
+            }
+
+            if (secName.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Пожалуйста, укажите Вашу фамилию<br>';
+            }
+
+            if (country.value == '') {
+                document.getElementById('errorMessage').innerHTML += 'Пожалуйста, укажите Вашу страну<br>';
+            } else {
+                alert(`Добро пожаловать, ${user}`)
+            }
+        }
+    </script>
+</body>
+
+
+</html>
